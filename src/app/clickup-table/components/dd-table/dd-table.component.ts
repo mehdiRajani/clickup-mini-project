@@ -1,5 +1,8 @@
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { User } from '../../interface/user.interface';
+import { Observable } from 'rxjs';
+import { TableHeadings } from '../../constants/clickupTable';
 
 @Component({
   selector: 'app-dd-table',
@@ -8,8 +11,9 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class DdTableComponent implements OnInit {
 
-  @Input() itemList: Array<any> = [];
-  @Output() dragDropHandler = new EventEmitter()
+  @Input() itemList: Array<User> = [];
+  @Output() dragDropHandler = new EventEmitter();
+  tableHeading: Array<{key: string, value: string}> = TableHeadings;
 
   constructor() { }
 

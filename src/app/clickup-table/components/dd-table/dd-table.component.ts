@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-dd-table',
@@ -7,11 +8,16 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class DdTableComponent implements OnInit {
 
-  @Input() itemList: Array<any> = []
+  @Input() itemList: Array<any> = [];
+  @Output() dragDropHandler = new EventEmitter()
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    this.dragDropHandler.emit({previousIndex: event.previousIndex, currentIndex: event.currentIndex})
   }
 
 }

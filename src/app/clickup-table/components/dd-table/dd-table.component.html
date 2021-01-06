@@ -1,18 +1,16 @@
-<table class="table">
+<table class="table dd-table">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col" *ngFor="let heading of tableHeading">{{heading.value}}</th>
     </tr>
   </thead>
   <tbody cdkDropList (cdkDropListDropped)="drop($event)">
-    <tr *ngFor="let item of itemList; index as i" cdkDrag>
+    <tr class="dd-table__table-row" *ngFor="let item of itemList; index as i" cdkDrag>
       <th scope="row">{{i+1}}</th>
-      <td>{{item.firstName}}</td>
-      <td>{{item.lastName}}</td>
-      <td>@mdo</td>
+      <td>{{item.fullName}}</td>
+      <td>{{item.gender}}</td>
+      <td>{{item.email}}</td>
+      <td>{{item.phone}}</td>
     </tr>
   </tbody>
 </table>

@@ -1,7 +1,11 @@
 <div class="clickup-table">
   <div class="row justify-content-center">
     <div class="col-8">
-      <app-dd-table [itemList]="userList" (dragDropHandler)="updateItemPosition($event)"></app-dd-table>
+      <app-dd-table 
+        [itemList]="users"
+        (dragDropHandler)="updateItemPosition($event)"
+      >
+    </app-dd-table>
     </div>
   </div>
 </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-clickup-table',
@@ -21,6 +22,10 @@ export class ClickupTableComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  updateItemPosition(posEvent: {previousIndex: number, currentIndex: number}) {
+    moveItemInArray(this.userList, posEvent.previousIndex, posEvent.currentIndex);
   }
 
 }

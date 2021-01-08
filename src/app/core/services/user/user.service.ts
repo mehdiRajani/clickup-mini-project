@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { User } from 'src/app/clickup-table/interface/user.interface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
 
@@ -25,7 +25,8 @@ export class UserService {
         gender: user.gender
       })
     })
-    return updatedList;
+
+    return this.sortAscending([...updatedList], 'fullName' );
   }
 
   getUserList() {
@@ -36,5 +37,11 @@ export class UserService {
         return updatedUserList;
       })
     )
+  }
+  
+  sortAscending(items: Array<User>, column: string) {
+    return [ ...items.sort(function(a:any,b:any){
+      if (a[column].toUpperCase() < b[column].toUpperCase()) return -1;
+    })]
   }
 }

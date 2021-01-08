@@ -9,12 +9,22 @@
     </tr>
   </thead>
   <tbody cdkDropList (cdkDropListDropped)="drop($event)">
-    <tr class="dd-table__table-row" *ngFor="let item of itemList; index as i" cdkDrag>
-      <th scope="row">{{i+1}}</th>
-      <td>{{item.fullName}}</td>
-      <td>{{item.gender}}</td>
-      <td>{{item.email}}</td>
-      <td>{{item.phone}}</td>
-    </tr>
+    <ng-container *ngIf="itemList.length">
+      <tr class="dd-table__table-row" *ngFor="let item of itemList; index as i" cdkDrag>
+        <th scope="row">{{i+1}}</th>
+        <td>{{item.fullName}}</td>
+        <td>{{item.gender}}</td>
+        <td>{{item.email}}</td>
+        <td>{{item.phone}}</td>
+      </tr>
+    </ng-container>
   </tbody>
 </table>
+<ng-container *ngIf="!itemList.length">
+  <div class="dd-table__empty-screen-container">
+    <h3>
+      Oops! No Data Currently Available
+      <span class="dd-table__empty-screen-container__link-text" (click)="reload()">Refresh</span>
+    </h3>
+  </div>
+</ng-container>

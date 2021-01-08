@@ -1,16 +1,26 @@
 export const TableHeadings = [{
-    key: '#',
-    value: '#'
-  },{
-    key: 'fullName',
-    value:'Full Name'
-  },{
-    key: 'gender',
-    value:'Gender',
-  },{
-    key: 'email',
-    value:'Email',
-  },{
-    key: 'phone',
-    value:'Phone',
-  }];
+  key: '#',
+  value: '#',
+  direction: '',
+},{
+  key: 'fullName',
+  value:'Full Name',
+  direction: 'asc',
+},{
+  key: 'gender',
+  value:'Gender',
+  direction: '',
+},{
+  key: 'email',
+  value:'Email',
+  direction: 'asc',
+},{
+  key: 'phone',
+  value:'Phone',
+  direction: '',
+}];
+
+export const SortOrder = {
+  ASC: 'asc',
+  DSC: 'dsc'
+}

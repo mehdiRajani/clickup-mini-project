@@ -1,8 +1,15 @@
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { User } from '../../interface/user.interface';
-import { Observable } from 'rxjs';
-import { TableHeadings } from '../../constants/clickupTable';
+import { SortOrder, TableHeadings } from '../../constants/clickupTable';
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
+import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
+
+export interface TableHeader {
+  key: string; 
+  value: string; 
+  direction: string;
+}
 
 @Component({
   selector: 'app-dd-table',
@@ -12,8 +19,15 @@ import { TableHeadings } from '../../constants/clickupTable';
 export class DdTableComponent implements OnInit {
 
   @Input() itemList: Array<User> = [];
+
   @Output() dragDropHandler = new EventEmitter();
-  tableHeading: Array<{key: string, value: string}> = TableHeadings;
+  @Output() sortColumn = new EventEmitter();
+  @Output() searchUsers = new EventEmitter();
+
+  tableHeading: Array<TableHeader> = TableHeadings;
+  faArrowUp = faArrowUp;
+  faArrowDown = faArrowDown;
+  sortOrder = SortOrder;
 
   constructor() { }
 
@@ -23,5 +37,16 @@ export class DdTableComponent implements OnInit {
   drop(event: CdkDragDrop<string[]>) {
     this.dragDropHandler.emit({previousIndex: event.previousIndex, currentIndex: event.currentIndex})
   }
+  
+  sort(sortEvent: TableHeader) {
+    this.tableHeading = this.tableHeading.map((heading) => {
+      if (heading.key === sortEvent.key) {
+        heading.direction = sortEvent.direction === this.sortOrder.ASC ? this.sortOrder.DSC : this.sortOrder.ASC 
+      }
+      return heading;
+    }) 
+    this.sortColumn.emit(sortEvent)
+  }
+
 
 }

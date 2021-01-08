@@ -1,9 +1,27 @@
 <div class="clickup-table">
   <div class="row justify-content-center">
     <div class="col-8">
+      <div class="clickup-table__header-container">
+        <div>
+          <h1>Users Information</h1>
+        </div>
+        <div>
+          <div class="input-group">
+            <span class="input-group-text">
+              <fa-icon [icon]="faSearch"></fa-icon>
+            </span>
+            <input 
+              [formControl]="searchControl" 
+              type="text" 
+              class="form-control" 
+              placeholder="Search User">
+          </div>
+        </div> 
+      </div>
       <app-dd-table 
         [itemList]="users"
         (dragDropHandler)="updateItemPosition($event)"
+        (sortColumn)="sortUserList($event)"
       >
     </app-dd-table>
     </div>

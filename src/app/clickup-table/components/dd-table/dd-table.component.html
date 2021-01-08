@@ -1,7 +1,11 @@
 <table class="table dd-table">
   <thead>
     <tr>
-      <th scope="col" *ngFor="let heading of tableHeading">{{heading.value}}</th>
+      <th scope="col" *ngFor="let heading of tableHeading">
+        {{heading.value}}
+        <fa-icon *ngIf="heading.direction === sortOrder.ASC" [icon]="faArrowUp" (click)="sort(heading)"></fa-icon>
+        <fa-icon *ngIf="heading.direction === sortOrder.DSC" [icon]="faArrowDown" (click)="sort(heading)"></fa-icon>
+      </th>
     </tr>
   </thead>
   <tbody cdkDropList (cdkDropListDropped)="drop($event)">

@@ -1,5 +1,5 @@
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { User } from '../../interface/user.interface';
 import { SortOrder, TableHeadings } from '../../constants/clickupTable';
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
@@ -14,7 +14,8 @@ export interface TableHeader {
 @Component({
   selector: 'app-dd-table',
   templateUrl: './dd-table.component.html',
-  styleUrls: ['./dd-table.component.scss']
+  styleUrls: ['./dd-table.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DdTableComponent implements OnInit {
 

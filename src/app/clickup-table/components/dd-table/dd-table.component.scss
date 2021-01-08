@@ -2,6 +2,18 @@
   &__table-row {
     cursor: move;
   }
+
+  &__empty-screen-container {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+
+    &__link-text {
+      text-decoration: underline;
+      color: blue;
+      cursor: pointer;
+    }
+  }
 }
 
 .cdk-drag-preview {

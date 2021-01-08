@@ -48,5 +48,9 @@ export class DdTableComponent implements OnInit {
     this.sortColumn.emit(sortEvent)
   }
 
+  reload() {
+    window.location.reload();
+  }
+
 
 }

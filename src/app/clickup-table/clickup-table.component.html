@@ -5,23 +5,12 @@
         <div>
           <h1>Users Information</h1>
         </div>
-        <div>
-          <div class="input-group">
-            <span class="input-group-text">
-              <fa-icon [icon]="faSearch"></fa-icon>
-            </span>
-            <input 
-              [formControl]="searchControl" 
-              type="text" 
-              class="form-control" 
-              placeholder="Search User">
-          </div>
-        </div> 
       </div>
       <app-dd-table 
         [itemList]="users"
-        (dragDropHandler)="updateItemPosition($event)"
-        (sortColumn)="sortUserList($event)"
+        [tableHeadings]="tableHeadings"
+        columnToSearch="fullName"
+        [columnsToSort]="columnsToSort"
       >
     </app-dd-table>
     </div>

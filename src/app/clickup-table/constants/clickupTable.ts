@@ -1,8 +1,4 @@
 export const TableHeadings = [{
-  key: '#',
-  value: '#',
-  direction: '',
-},{
   key: 'fullName',
   value:'Full Name',
   direction: 'asc',
@@ -13,7 +9,7 @@ export const TableHeadings = [{
 },{
   key: 'email',
   value:'Email',
-  direction: 'asc',
+  direction: '',
 },{
   key: 'phone',
   value:'Phone',

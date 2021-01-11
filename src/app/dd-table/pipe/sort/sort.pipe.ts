@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { SortOrder } from '../../constants/clickupTable';
-import { User } from '../../interface/user.interface';
+import { SortOrder } from 'src/app/clickup-table/constants/clickupTable';
+import { User } from 'src/app/clickup-table/interface/user.interface';
 
 @Pipe({
   name: 'sort'

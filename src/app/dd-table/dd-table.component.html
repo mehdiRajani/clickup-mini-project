@@ -1,0 +1,43 @@
+<div class="dd-table">
+  <div class="dd-table__search input-group">
+    <span class="input-group-text">
+      <fa-icon [icon]="faSearch"></fa-icon>
+    </span>
+    <input [formControl]="searchControl" type="text" class="form-control" placeholder="Search User">
+  </div>
+    <table class="table" cdkDropListGroup style="height: 100%">
+      <thead>
+        <tr 
+          cdkDropList 
+          cdkDropListOrientation="horizontal" 
+          (cdkDropListDropped)="dropColumn($event)"
+          [cdkDropListData]="tableHeadings"
+        >
+          <th 
+            class="dd-table__table-heading" 
+            scope="col" 
+            *ngFor="let heading of tableHeadings" 
+            (click)="sort(heading)" 
+            cdkDrag
+          >
+            {{heading.value}}
+            <fa-icon *ngIf="heading.direction === sortOrder.ASC" [icon]="faArrowUp" (click)="sort(heading)"></fa-icon>
+            <fa-icon *ngIf="heading.direction === sortOrder.DSC" [icon]="faArrowDown" (click)="sort(heading)"></fa-icon>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of itemList">
+          <td *ngFor="let head of tableHeadings">{{row[head.key]}}</td>
+        </tr>
+      </tbody>
+    </table>
+  <ng-container *ngIf="!itemList.length">
+    <div class="dd-table__empty-screen-container">
+      <h3>
+        Oops! No Data Currently Available
+        <span class="dd-table__empty-screen-container__link-text" (click)="reload()">Refresh</span>
+      </h3>
+    </div>
+  </ng-container>
+</div>

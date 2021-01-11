@@ -3,6 +3,10 @@
     cursor: move;
   }
 
+  &__table-heading {
+    cursor: pointer;
+  }
+
   &__empty-screen-container {
     display: flex;
     justify-content: center;
@@ -13,6 +17,10 @@
       color: blue;
       cursor: pointer;
     }
+  }
+
+  &__search {
+    margin-bottom: 40px;
   }
 }
 

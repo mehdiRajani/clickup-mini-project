@@ -1,28 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ClickupTableComponent } from './clickup-table.component';
-import {DragDropModule} from '@angular/cdk/drag-drop';
-import { DdTableComponent } from './components/dd-table/dd-table.component';
 import { ClickupTableRoutingModule } from './clickup-table-routing.module';
 import { StoreModule } from '@ngrx/store';
 import * as ClickupTableReducer from '../clickup-table/store/clickup-table.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { ClickupTableEffects } from './store/clickup-table.effect';
-import { SortPipe } from './pipe/sort/sort.pipe';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { ReactiveFormsModule } from '@angular/forms';
-
+import { DdTableModule } from '../dd-table/dd-table.module';
 
 @NgModule({
-  declarations: [ClickupTableComponent, DdTableComponent, SortPipe],
+  declarations: [ClickupTableComponent],
   imports: [
-    CommonModule,
-    DragDropModule,
+  CommonModule,
     ClickupTableRoutingModule,
     StoreModule.forRoot({clickupState: ClickupTableReducer.reducer}),
     EffectsModule.forRoot([ClickupTableEffects]),
-    ReactiveFormsModule,
-    FontAwesomeModule
+    DdTableModule
   ]
 })
 export class ClickupTableModule { }

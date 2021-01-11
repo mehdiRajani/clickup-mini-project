@@ -8,7 +8,7 @@ import { User } from 'src/app/clickup-table/interface/user.interface';
 })
 export class UserService {
 
-  apiBaseUrl = 'https://randomuser.me/api/?key=652W-6KGA-3HE5-9NN4&ref=1234abcd&results=1000&seed=huskiesarecute'
+  apiBaseUrl = 'https://randomuser.me/api/?key=652W-6KGA-3HE5-9NN4&ref=1234abcd&results=10&seed=huskiesarecute'
 
   constructor(
     private http: HttpClient
